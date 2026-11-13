@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TLE 8 • Term 2 Week 7 • Interactive Learning Pack</title>
+<style>
+:root{--navy:#17324d;--teal:#087e83;--mint:#dff5ed;--gold:#ffc857;--coral:#ff806e;--ink:#243447;--muted:#64748b;--line:#dbe5ec;--bg:#f1f6f8;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Trebuchet MS","Segoe UI",Arial,sans-serif}
+header{background:linear-gradient(120deg,#132c48,#087e83 75%,#24a18e);color:white;padding:25px clamp(18px,4vw,52px);position:relative;overflow:hidden;min-height:185px}
+header h1{font-size:clamp(1.7rem,3.6vw,2.7rem);line-height:1.08;margin:8px 0}header p{margin:3px 0;color:#e1f7f3}.school{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#c9fff0}
+.teacher{font-weight:700;color:#ffe4a6;margin-top:8px}.term{display:inline-block;background:#ffffff20;border:1px solid #ffffff55;border-radius:30px;padding:4px 11px;font-size:.82rem;font-weight:800}
+.hero-art{position:absolute;right:6%;top:15px;width:230px;height:150px;opacity:.96;pointer-events:none}
+.float{animation:float 3.6s ease-in-out infinite;transform-origin:center}.spin{animation:spin 14s linear infinite;transform-origin:center}.bob{animation:bob 2.4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(2deg)}}@keyframes spin{to{transform:rotate(360deg)}}
+.shell{max-width:1450px;margin:20px auto;padding:0 16px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px}
+aside{position:sticky;top:12px;align-self:start;max-height:calc(100vh - 24px);overflow:auto;background:white;border:1px solid var(--line);border-radius:17px;padding:15px;box-shadow:0 8px 25px #19324a12}
+.navtitle{font-size:.75rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:5px 8px 10px}
+nav button{display:flex;align-items:center;gap:9px;width:100%;border:0;background:transparent;text-align:left;padding:10px;border-radius:11px;margin:3px 0;color:var(--ink);font-weight:700;cursor:pointer}
+nav button.active{background:#e2f5f0;color:#076568}nav button.done:after{content:"✓";margin-left:auto;color:#07835c}
+.bubble{width:27px;height:27px;border-radius:9px;background:#edf2f6;display:grid;place-items:center;font-size:.8rem}
+.progress{padding:12px 8px 4px}.progress small{display:flex;justify-content:space-between;color:var(--muted)}progress{width:100%;height:9px;accent-color:var(--teal)}
+main{min-width:0}.page{display:none;background:white;border:1px solid var(--line);border-radius:17px;padding:clamp(18px,3vw,34px);box-shadow:0 8px 25px #19324a10;margin-bottom:16px}.page.active{display:block}
+.kicker{font-size:.75rem;text-transform:uppercase;letter-spacing:.13em;font-weight:900;color:var(--teal)}h2{color:var(--navy);font-size:1.55rem;margin:4px 0 14px}h3{font-size:1.05rem;color:var(--navy);margin:20px 0 7px}
+.note{background:#eff9f7;border-left:4px solid var(--teal);border-radius:10px;padding:12px 15px;margin:12px 0}.objective{background:#f5f8fb;border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin:12px 0}.instruction{background:#fff7e6;border-left:4px solid var(--gold);border-radius:10px;padding:12px 15px;margin:12px 0}
+label{display:block;font-weight:700;font-size:.9rem;margin:8px 0 5px}input[type=text],input[type=email],input[type=date],textarea{width:100%;padding:11px;border:1px solid #cbd6df;border-radius:9px;font:inherit;background:#fff;color:var(--ink)}textarea{min-height:92px;resize:vertical}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.question{border:1px solid var(--line);border-radius:12px;padding:13px;margin:12px 0}.question p{font-weight:800;margin:0 0 8px}.choices{display:grid;gap:6px}.choices label{display:flex;gap:8px;align-items:flex-start;font-weight:400;margin:1px 0;cursor:pointer}.choices input{margin-top:5px}.feedback{font-size:.86rem;font-weight:800;margin-top:6px}.ok{color:#07835c}.no{color:#b45309}
+.btns{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.btn{border:0;border-radius:10px;padding:10px 15px;font-weight:800;cursor:pointer;background:var(--teal);color:white}.btn.alt{background:#eaf0f4;color:var(--navy)}.btn.gold{background:var(--gold);color:#3b2a00}.btn:disabled{opacity:.4;cursor:not-allowed}
+.score{display:inline-block;background:#e7f7ef;color:#075e43;border-radius:10px;padding:8px 12px;font-weight:900;margin-top:9px}.small{font-size:.83rem;color:var(--muted)}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:.9rem}th,td{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}th{background:#edf6f5;color:var(--navy)}td input{width:65px;padding:6px;border:1px solid #bdcbd5;border-radius:7px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.mini{border:1px solid var(--line);border-radius:13px;padding:12px;background:#fcfefe}.mini svg{width:100%;height:90px}
+.summary{background:linear-gradient(120deg,#17324d,#087e83);color:white;border-radius:15px;padding:20px}.summary .big{font-size:2.4rem;font-weight:900;color:#ffe4a6}
+.bottom{display:flex;justify-content:space-between;gap:10px;margin:10px 0 30px}
+@media(max-width:850px){.shell{grid-template-columns:1fr}aside{position:static;max-height:none}nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.hero-art{right:1%;opacity:.35}}
+@media(max-width:540px){.grid2,.grid3,.cards{grid-template-columns:1fr}nav{grid-template-columns:1fr 1fr}.page{padding:17px}.hero-art{display:none}}
+@media print{body{background:white}.shell{display:block;margin:0;padding:0}aside,.btns,.bottom,.hero-art{display:none!important}header{background:white;color:#17324d;border-bottom:2px solid #17324d}.school,header p,.teacher{color:#17324d}.page{display:block!important;box-shadow:none;border:0;padding:12px;break-inside:avoid}.summary{background:white;color:#17324d;border:2px solid #17324d}}
+</style></head>
+<body>
+<header>
+ <div class="school">Culabay National High School • TLE Grade 8</div><span class="term">TERM 2 • WEEK 7</span>
+ <h1>Garment Makers’<br>Learning Adventure!</h1><p>Interactive Learning Activity Sheets • Concepts in Making Garments</p>
+ <div class="teacher">Teacher: Mae Ann S. Siarro</div>
+ <svg class="hero-art" viewBox="0 0 260 170" aria-hidden="true">
+  <g class="spin" fill="none" stroke="#ffe3a0" stroke-width="3"><circle cx="208" cy="35" r="22" stroke-dasharray="5 6"/><circle cx="208" cy="35" r="12"/></g>
+  <g class="float"><path d="M35 43 L63 28 L86 42 L104 32 L128 47 L115 65 L103 57 L103 135 L53 135 L53 57 L42 66Z" fill="#ffbd59" stroke="#fff" stroke-width="3"/><path d="M63 29 Q74 54 86 42 Q97 54 104 32" fill="none" stroke="#fff" stroke-width="3"/><path d="M76 49 L76 135" stroke="#d96c4b" stroke-width="2"/></g>
+  <g class="bob"><circle cx="170" cy="112" r="31" fill="#f78f7b"/><path d="M150 111 Q170 79 190 111 Q180 132 170 133 Q157 130 150 111" fill="#fff0d2"/><path d="M161 105 L179 105 M170 96 L170 128" stroke="#d45f52" stroke-width="2"/></g>
+  <g fill="#dff7ed"><path d="M25 112 l5 12 12 5 -12 5 -5 12 -5-12 -12-5 12-5z"/><circle cx="137" cy="22" r="5"/><circle cx="238" cy="128" r="4"/></g>
+ </svg>
+</header>
+<div class="shell">
+<aside><div class="navtitle">Your learning journey</div><nav id="nav">
+<button class="active" data-p="0"><span class="bubble">1</span> Learner profile</button>
+<button data-p="1"><span class="bubble">2</span> Garment types & trends</button>
+<button data-p="2"><span class="bubble">3</span> Ergonomics & sorting</button>
+<button data-p="3"><span class="bubble">4</span> Sewing supplies</button>
+<button data-p="4"><span class="bubble">5</span> Fabrics & finishing</button>
+<button data-p="5"><span class="bubble">6</span> Textile swatch book</button>
+<button data-p="6"><span class="bubble">7</span> Doodle notes</button>
+<button data-p="7"><span class="bubble">8</span> Score & submit</button>
+</nav><div class="progress"><small><span>Activities completed</span><b id="progLabel">0 / 8</b></small><progress id="prog" max="8" value="0"></progress><p class="small">Save regularly. Work is stored in this browser on this device.</p></div></aside>
+<main>
+<section class="page active" data-page="0"><div class="kicker">Welcome, young designer!</div><h2>Let’s get started</h2><p>Fill in your learner details before beginning the four-day learning sequence.</p>
+<div class="grid3"><div><label for="learner">Name of learner</label><input id="learner" type="text" placeholder="Surname, First name"></div><div><label for="section">Grade & section</label><input id="section" type="text" placeholder="Grade 8 - Section"></div><div><label for="date">Date</label><input id="date" type="date"></div></div>
+<div class="grid2"><div><label>Teacher</label><input value="Mae Ann S. Siarro" readonly></div><div><label>School</label><input value="Culabay National High School" readonly></div></div>
+<div class="note"><b>Learning competency</b><br>Discuss the Concepts in Making Garments.</div>
+<div class="objective"><b>Learning objectives</b><ol><li>Classify various types of clothing based on their styles, purposes, and occasions;</li><li>Identify sewing supplies and materials commonly used in garment production;</li><li>Examine different types of fabric and their characteristics by creating a fabric swatch book; and</li><li>Appreciate the importance of understanding the concepts in making garments.</li></ol></div>
+<div class="note"><b>Content focus</b><br>Introduction to garments; types of garments; trends and innovation; ergonomics; supplies and materials used for making garments; kinds of fabric; finishing materials.</div>
+<h3>How to use this pack</h3><ol><li>Read the competency and objectives first, then follow the activity instructions.</li><li>Answer online in this file, or write on paper when offline.</li><li>Use <b>Check answers</b> to see scores for auto-checked quizzes.</li><li>Use <b>Save</b> to store your work on this device; use <b>Completed</b> to unlock the next activity.</li><li>At the end, download your answers, print/save as PDF, or prepare an email to your teacher.</li></ol>
+<div class="instruction"><b>Offline mode:</b> Open the downloaded HTML file in Chrome or Edge even without internet. Save is local to the same browser/device. For paper-based work, write your answers and ask your teacher to record or check them.</div>
+<div class="btns"><button class="btn" onclick="saveWork()">Save</button><button class="btn gold" onclick="markDone(0)">Completed</button><button class="btn alt" onclick="go(1)">Next activity →</button></div></section>
+
+<section class="page" data-page="1"><div class="kicker">Day 1 • Activity 1</div><h2>Garment types, trends & innovation</h2>
+<div class="note"><b>Learning competency:</b> Discuss the Concepts in Making Garments.</div><div class="objective"><b>Objectives</b><ul><li>Classify garments according to style, purpose, and occasion.</li><li>Recognize trends and innovations in the garment industry.</li></ul></div>
+<div class="instruction"><b>Instructions:</b> Read each item carefully. Select the best answer. Each correct answer is worth 1 point. When offline, write the letter of your answer in your notebook. Click <b>Check answers</b> after completing all questions.</div>
+<div class="cards">
+<div class="mini"><svg viewBox="0 0 120 90"><path d="M34 18l16-9 10 10 10-10 16 9 10 20-14 7-7-11v45H45V34l-7 11-14-7z" fill="#ffbd59" stroke="#b36b28" stroke-width="2"/></svg><b>Casual wear</b><div class="small">Comfortable everyday clothes</div></div>
+<div class="mini"><svg viewBox="0 0 120 90"><path d="M42 10h36l-8 18 18 48H32l18-48z" fill="#b7a5e8" stroke="#65548d" stroke-width="2"/><path d="M50 10q10 20 20 0" fill="none" stroke="#65548d" stroke-width="2"/></svg><b>Formal attire</b><div class="small">Elegant special-occasion clothing</div></div>
+<div class="mini"><svg viewBox="0 0 120 90"><path d="M30 22l20-12 10 10 10-10 20 12 12 20-15 6-8-12v42H41V36l-8 12-15-6z" fill="#8ad7bd" stroke="#287c68" stroke-width="2"/></svg><b>Activewear</b><div class="small">Flexible apparel for exercise</div></div></div>
+<div id="quiz-garment"></div><div class="score" id="score-garment">Not checked • 8 points possible</div>
+<h3>Think about innovation</h3><p>Choose one trend from the lesson and explain how it can improve clothing or reduce waste.</p><textarea id="trendResponse" placeholder="I choose... It can help because..."></textarea>
+<div class="btns"><button class="btn" onclick="check('garment')">✓ Check answers</button><button class="btn alt" onclick="saveWork()">Save</button><button class="btn gold" onclick="markDone(1)">Completed</button><button class="btn alt" onclick="go(2)">Next →</button></div></section>
+
+<section class="page" data-page="2"><div class="kicker">Day 2 • Activity 2</div><h2>Ergonomics & clothing sorting challenge</h2>
+<div class="note"><b>Learning competency:</b> Discuss the Concepts in Making Garments.</div><div class="objective"><b>Objectives</b><ul><li>Explain how garment design can maximize comfort, functionality, and efficiency.</li><li>Identify fit and sizing, seam placement, fabric selection, construction techniques, functionality, accessibility, and aesthetics.</li><li>Classify garments based on style, purpose, and occasion.</li></ul></div>
+<div class="instruction"><b>Instructions:</b> Answer the multiple-choice questions. Then complete the sorting challenge by matching each clothing example to its category. For offline work, record your choices on paper. Each quiz item is worth 1 point.</div>
+<div id="quiz-ergo"></div><div class="score" id="score-ergo">Not checked • 8 points possible</div>
+<h3>Clothing sorting challenge</h3><p>Type a suitable category for each clothing item (examples: casual wear, formal attire, activewear, outerwear, sleepwear, swimwear, ethnic clothing, business casual attire, uniforms, evening wear).</p>
+<div class="grid2"><div><label>Jeans and T-shirt for daily errands</label><input id="sort1" type="text" placeholder="Garment category"></div><div><label>Raincoat worn during rainy weather</label><input id="sort2" type="text" placeholder="Garment category"></div><div><label>Traditional kimono for a cultural celebration</label><input id="sort3" type="text" placeholder="Garment category"></div><div><label>Ball gown for a gala</label><input id="sort4" type="text" placeholder="Garment category"></div></div>
+<h3>Design for people</h3><p>Imagine designing a school garment. Describe two ergonomic features that would make it comfortable and practical.</p><textarea id="ergoResponse" placeholder="Feature 1... Feature 2..."></textarea>
+<div class="btns"><button class="btn" onclick="check('ergo')">✓ Check answers</button><button class="btn alt" onclick="saveWork()">Save</button><button class="btn gold" onclick="markDone(2)">Completed</button><button class="btn alt" onclick="go(3)">Next →</button></div></section>
+
+<section class="page" data-page="3"><div class="kicker">Day 3 • Activity 3</div><h2>Meet the sewing supplies!</h2>
+<div class="note"><b>Learning competency:</b> Discuss the Concepts in Making Garments.</div><div class="objective"><b>Objectives</b><ul><li>Identify common sewing supplies, tools, and their functions.</li><li>Distinguish tools used for measuring, shaping, cutting, marking, fastening, and sewing.</li></ul></div>
+<div class="instruction"><b>Instructions:</b> Read the function and select the correct sewing tool. Each correct answer is worth 1 point. Review the tool descriptions in your LAS if you need help. Use safe handling practices when working with needles, pins, and cutting tools.</div>
+<div id="quiz-tools"></div><div class="score" id="score-tools">Not checked • 10 points possible</div>
+<div class="note"><b>Safety reminder:</b> Use scissors and shears carefully. Keep pins and needles in a pincushion. Use a thimble to protect your finger. Do not leave sharp tools scattered on the work area.</div>
+<div class="btns"><button class="btn" onclick="check('tools')">✓ Check answers</button><button class="btn alt" onclick="saveWork()">Save</button><button class="btn gold" onclick="markDone(3)">Completed</button><button class="btn alt" onclick="go(4)">Next →</button></div></section>
+
+<section class="page" data-page="4"><div class="kicker">Day 3 • Activity 4</div><h2>Fabric explorer & finishing materials</h2>
+<div class="note"><b>Learning competency:</b> Discuss the Concepts in Making Garments.</div><div class="objective"><b>Objectives</b><ul><li>Distinguish natural and synthetic fibers, and woven and knitted fabrics.</li><li>Describe common fabric types and their characteristics.</li><li>Identify finishing materials and their uses in garment production.</li></ul></div>
+<div class="instruction"><b>Instructions:</b> Choose the best answer for each question. The lesson discusses chiffon, cotton, crepe, denim, lace, leather, linen, satin, silk, synthetics (nylon, polyester, spandex), velvet, and wool. Each correct answer is worth 1 point.</div>
+<div id="quiz-fabric"></div><div class="score" id="score-fabric">Not checked • 10 points possible</div>
+<h3>Finishing material match-up</h3><p>Write the finishing material that best matches the function.</p>
+<div class="grid2"><div><label>Used to stitch garment parts together</label><input id="finish1" type="text" placeholder="Material"></div><div><label>Closure that helps a garment open and close</label><input id="finish2" type="text" placeholder="Material"></div><div><label>Stretchy material for waistbands or cuffs</label><input id="finish3" type="text" placeholder="Material"></div><div><label>Decorative ribbon, lace, bias tape, or braid</label><input id="finish4" type="text" placeholder="Material"></div></div>
+<div class="note"><b>Think sustainably:</b> Reuse clean fabric scraps and choose materials thoughtfully. This connects the lesson to SDG 12: Responsible Consumption and Production.</div>
+<div class="btns"><button class="btn" onclick="check('fabric')">✓ Check answers</button><button class="btn alt" onclick="saveWork()">Save</button><button class="btn gold" onclick="markDone(4)">Completed</button><button class="btn alt" onclick="go(5)">Next →</button></div></section>
+
+<section class="page" data-page="5"><div class="kicker">Day 4 • Performance task</div><h2>Build a textile swatch book</h2>
+<div class="note"><b>Learning competency:</b> Discuss the Concepts in Making Garments.</div><div class="objective"><b>Objectives</b><ul><li>Examine different types of fabric and their characteristics.</li><li>Collect, identify, and describe fabric samples.</li><li>Share observations about the fabrics and their possible uses.</li></ul></div>
+<div class="instruction"><b>Instructions:</b> Create a Textile Swatch Book by collecting different fabric swatches. Examine each sample closely and record its name (if known), texture, thickness, appearance, fiber or fabric category (if known), and possible use. Include at least five samples. You may attach clean fabric scraps, or draw and describe them if you cannot obtain swatches. Ask permission before taking fabric from clothing. Share your swatch book with your class or teacher.</div>
+<div id="swatches"></div><label for="swatchLearn">What did you learn from comparing your samples?</label><textarea id="swatchLearn" placeholder="I noticed that..."></textarea>
+<h3>Performance task rubric • 15 points</h3><p class="small">Teacher: rate each criterion from 0 to 3. This rubric is a suggested classroom scoring guide for this task, not a separate DepEd-prescribed rubric.</p>
+<table><thead><tr><th>Criteria</th><th>3 — Complete</th><th>2 — Developing</th><th>1 — Beginning</th><th>0 — Not shown</th><th>Score</th></tr></thead><tbody id="rubricSwatch"></tbody></table><div class="score" id="score-swatch">Rubric score: 0 / 15</div>
+<div class="btns"><button class="btn alt" onclick="saveWork()">Save</button><button class="btn gold" onclick="markDone(5)">Completed</button><button class="btn alt" onclick="go(6)">Next →</button></div></section>
+
+<section class="page" data-page="6"><div class="kicker">Day 4 • Formative assessment</div><h2>Doodle notes & learning reflection</h2>
+<div class="note"><b>Learning competency:</b> Discuss the Concepts in Making Garments.</div><div class="objective"><b>Objectives</b><ul><li>Visually represent key ideas about making garments.</li><li>Reflect on sustainable choices, innovation, and ergonomic clothing.</li></ul></div>
+<div class="instruction"><b>Instructions:</b> On a blank sheet of paper, create doodle notes or a drawing using symbols, shapes, labels, and illustrations to show what you learned about garment concepts. Include ideas about garment types, trends and innovation, ergonomics, sewing supplies, fabrics, or finishing materials. Add at least three labelled ideas. You may describe your drawing below if you are completing this digitally. Submit the drawing or a photo of it to your teacher.</div>
+<label for="doodleText">Describe your doodle notes or identify the attached drawing</label><textarea id="doodleText" placeholder="My doodle shows..."></textarea>
+<h3>Reflection on learning</h3><p>How can we choose and create clothes in ways that are good for the environment, improve how clothes are made, and ensure people feel comfortable and healthy?</p><textarea id="reflection" placeholder="We can choose and create clothes by..."></textarea>
+<h3>Doodle notes rubric • 5 points</h3><p class="small">Teacher awards 0 or 1 point for each criterion.</p><table><thead><tr><th>Criteria</th><th>Evidence</th><th>Score (0–1)</th></tr></thead><tbody id="rubricDoodle"></tbody></table><div class="score" id="score-doodle">Rubric score: 0 / 5</div>
+<div class="btns"><button class="btn alt" onclick="saveWork()">Save</button><button class="btn gold" onclick="markDone(6)">Completed</button><button class="btn alt" onclick="go(7)">Next →</button></div></section>
+
+<section class="page" data-page="7"><div class="kicker">You made it!</div><h2>My score & submission center</h2><p>Review your quiz results and teacher-assessed rubrics. Make sure your performance task and drawing are ready to submit.</p>
+<table><thead><tr><th>Activity</th><th>Score</th><th>Maximum</th><th>Status</th></tr></thead><tbody id="scoreTable"></tbody><tfoot><tr><th>Total</th><th id="earned">0</th><th id="possible">56</th><th id="percentage">0%</th></tr></tfoot></table>
+<div class="summary"><div>YOUR LEARNING ACTIVITY RESULT</div><div class="big" id="percentBig">0%</div><b id="pointsBig">0 / 51 points</b><p id="message">Complete and check activities to calculate your result.</p></div>
+<div class="instruction"><b>Scoring and DepEd grading note:</b> This interactive LAS uses its own formative activity points: garment quiz 8, ergonomics quiz 8, sewing tools quiz 10, fabric quiz 10, textile swatch book rubric 15, and doodle notes rubric 5 (total 56 points). Percentage = points earned ÷ 56 × 100. The lesson exemplar identifies the learning competency and performance standard, but does not prescribe this point allocation. This activity percentage is not the official quarterly/term grade. For official grading, the teacher must record evidence and compute grades using the applicable DepEd assessment policy and school-approved procedures; do not treat this LAS percentage as a replacement for Written Work, Performance Tasks, or Quarterly Assessment components.</div>
+<h3>Submit your work</h3><div class="grid2"><div><label for="email">Teacher email (optional)</label><input type="email" id="email" placeholder="Enter teacher's email address"></div><div><label>Submission reminder</label><p class="small">Email opens your email app; attach the downloaded file and photos of your physical outputs.</p></div></div>
+<div class="btns"><button class="btn" onclick="saveWork()">Save on this device</button><button class="btn" onclick="sendToSheets('save')">Save to Google Sheets</button><button class="btn gold" onclick="sendToSheets('submit')">Submit to Teacher</button><button class="btn alt" onclick="downloadAnswers()">⬇ Download answers (.txt)</button><button class="btn alt" onclick="window.print()">Print / Save as PDF</button><button class="btn alt" onclick="emailWork()">Prepare email submission</button></div>
+<p id="cloudStatus" class="small" role="status">Google Sheets connection is configured. Use “Save to Google Sheets” for a draft or “Submit to Teacher” when finished. Keep a downloaded copy as backup.</p>
+<p class="small">Online saving requires an internet connection. Attach photos of the physical swatch book and doodle-notes page separately if your teacher requests them.</p>
+<div class="btns"><button class="btn alt" onclick="go(6)">← Previous</button></div></section>
+<div class="bottom"><button class="btn alt" id="prev" onclick="go(current-1)" disabled>← Previous</button><button class="btn" id="next" onclick="go(current+1)">Next →</button></div>
+</main></div>
+<script>
+const sets={
+garment:[
+["Which garments are described as cozy, carefree apparel for daily activities?","Casual wear","Formal attire","Evening wear","Uniforms",0],
+["Which type includes gowns, blazers, suits, and formal shoes?","Formal attire","Sleepwear","Activewear","Outerwear",0],
+["Which type is designed for sports and physical activities?","Activewear","Business casual","Swimwear","Ethnic clothing",0],
+["Which garments are worn over other clothing for warmth or protection?","Outerwear","Sleepwear","Evening wear","Casual wear",0],
+["Which clothing is worn when sleeping or relaxing?","Sleepwear","Uniforms","Formal attire","Swimwear",0],
+["Which type represents traditional dress of specific cultures and regions?","Ethnic clothing","Activewear","Business casual","Outerwear",0],
+["Clothes with sensors, microchips, or conductive fibers are an example of what?","Smart fabrics and wearable technology","Casual wear","Traditional tailoring","Sleepwear",0],
+["Recycling, upcycling, rental, and resale are associated with what trend?","Circular fashion economy","Evening wear","Formal attire","Uniform design",0]],
+ergo:[
+["Ergonomics in clothing aims to maximize what?","Comfort, functionality, and efficiency","Decoration only","Cost and brand value","Fabric weight only",0],
+["Proper fit and sizing should accommodate body shapes and allow what?","Ease of movement","More seams at joints","Less accessibility","Restricted motion",0],
+["Why minimize seams near underarms or joints?","To reduce irritation and restriction","To add more decoration","To make fabric heavier","To prevent all stretching",0],
+["Which fabric qualities can help avoid overheating and perspiration?","Lightweight, breathable, moisture-wicking","Heavy and non-breathable","Rigid and rough","Thick and stiff",0],
+["Flatlock seams are an example of which ergonomic consideration?","Construction techniques","Aesthetics","Accessibility","Sizing options",0],
+["Pockets, ventilation panels, and reflective elements support what?","Functionality","Fiber source","Seam allowance","Fashion history",0],
+["Easy-to-open fastenings can support which consideration?","Accessibility","Aesthetics only","Fabric texture","Color trends",0],
+["Color, pattern, and silhouette can influence confidence and satisfaction. This relates to:","Aesthetics","Seam placement","Cutting safety","Fiber production",0]],
+tools:[
+["Used to measure distances and take body measurements (150 cm on one side).","Tape measure","Sewing gauge","Tracing wheel","Seam ripper",0],
+["Used for small hem areas, seam allowances, buttonholes, pleats, and tucks.","Sewing gauge","Meter stick","Hip curve","Thimble",0],
+["Used to draw a straight line between two points.","Ruler","French curve","Pincushion","Threader",0],
+["Measures fabric length by yard or meter.","Meter stick or yardstick","Seam ripper","Tracing wheel","Thimble",0],
+["A 90-degree ruler used to draw perpendicular lines.","L-square","Hip curve","Tape measure","Thread clipper",0],
+["Shapes the hipline and other curved garment areas.","Hip curve","Ruler","Pincushion","Tailor's chalk",0],
+["Connects arcs and semicircles such as necklines, armholes, and collars.","French curve","L-square","Meter stick","Seam ripper",0],
+["Produces decorative zigzag edges and can finish raw fabric edges.","Pinking shears","Buttonhole scissors","Threader","Hand needle",0],
+["Intended for taking or ripping out stitches of a seam.","Seam ripper","Thread clipper","Tracing wheel","Pincushion",0],
+["Used to mark fabric before cutting or sewing.","Tailor's chalk","Thimble","Hand needle","Zipper",0]],
+fabric:[
+["Natural fibers can come from which sources?","Plants and animals","Only petroleum","Only metals","Only plastics",0],
+["Cotton is derived from which source?","Cotton plant","Silkworm cocoon","Sheep fleece","Flax plant",0],
+["Silk is sourced from what?","Silkworm cocoons","Cotton seeds","Flax stems","Synthetic polymers",0],
+["Woven fabrics are made by yarn interweaving in which directions?","Horizontally and vertically","Only in loops","Only diagonally","By gluing fibers",0],
+["Knitted fabrics are formed by what structure?","Interconnecting loops","Horizontal and vertical loom weaving","Pressed plastic sheets","Leather tanning",0],
+["Which fabric is a durable cotton twill often used for jeans and jackets?","Denim","Chiffon","Lace","Satin",0],
+["Which fabric is strong, lightweight, absorbent, and made from flax?","Linen","Nylon","Velvet","Spandex",0],
+["Which fabric has a glossy, smooth surface and a matte underside?","Satin","Wool","Denim","Leather",0],
+["Which synthetic fiber is elastic and also called Lycra or elastane?","Spandex","Cotton","Silk","Linen",0],
+["Which finishing material secures openings and may include hooks, snaps, and Velcro?","Fasteners","Trims","Patches","Thread",0]]
+};
+let current=0,done={},scores={garment:null,ergo:null,tools:null,fabric:null,swatch:0,doodle:0};
+function drawQuiz(key){document.getElementById("quiz-"+key).innerHTML=sets[key].map((q,i)=>`<div class="question"><p>${i+1}. ${q[0]}</p><div class="choices">${q.slice(1,5).map((a,j)=>`<label><input type="radio" name="${key}_${i}" value="${j}"> ${"ABCD"[j]}. ${a}</label>`).join("")}</div><div class="feedback" id="${key}-fb-${i}"></div></div>`).join("")}
+Object.keys(sets).forEach(drawQuiz);
+document.getElementById("swatches").innerHTML=Array.from({length:5},(_,i)=>`<div class="question"><b>Fabric sample ${i+1}</b><div class="grid2"><div><label>Fabric name (if known)</label><input id="sw${i}name" type="text" placeholder="e.g., cotton, denim, satin"></div><div><label>Possible garment/product use</label><input id="sw${i}use" type="text" placeholder="e.g., shirt, jeans, dress"></div><div><label>Texture / appearance</label><input id="sw${i}texture" type="text" placeholder="Describe what you observe"></div><div><label>Thickness / stretch / fiber (if known)</label><input id="sw${i}properties" type="text" placeholder="Describe properties"></div></div></div>`).join("");
+const swCriteria=["Five different samples or clearly described fabric alternatives are included.","Samples are labelled with names or reasonable identifications.","Characteristics are described using observable details.","A possible garment or product use is identified for each sample.","The swatch book is organized and safely prepared using responsible material use."];
+document.getElementById("rubricSwatch").innerHTML=swCriteria.map((x,i)=>`<tr><td>${x}</td><td>Complete</td><td>Mostly complete</td><td>Limited evidence</td><td>Not shown</td><td><input data-r="swatch" type="number" min="0" max="3" value="0" oninput="rubric('swatch')"></td></tr>`).join("");
+const doodleCriteria=["At least three key lesson ideas are represented.","Labels, symbols, or illustrations communicate the ideas.","The drawing is understandable and organized.","Reflection mentions sustainability, innovation, comfort, or health.","Work shows care and effort."];
+document.getElementById("rubricDoodle").innerHTML=doodleCriteria.map(x=>`<tr><td>${x}</td><td>Criterion is evident in submitted drawing/reflection</td><td><input data-r="doodle" type="number" min="0" max="1" value="0" oninput="rubric('doodle')"></td></tr>`).join("");
+function check(k){let n=0;sets[k].forEach((q,i)=>{let el=document.querySelector(`input[name="${k}_${i}"]:checked`),f=document.getElementById(`${k}-fb-${i}`),ok=el&&Number(el.value)===q[5];if(ok)n++;f.textContent=!el?"Choose an answer.":ok?"✓ Correct":"Review the lesson and try again.";f.className="feedback "+(ok?"ok":"no")});scores[k]=n;document.getElementById("score-"+k).textContent=`Score: ${n} / ${sets[k].length}`;updateScores();saveWork(false)}
+function rubric(k){let max=k==="swatch"?3:1;let a=[...document.querySelectorAll(`[data-r="${k}"]`)].map(e=>Math.min(max,Math.max(0,Number(e.value)||0)));scores[k]=a.reduce((x,y)=>x+y,0);document.getElementById("score-"+k).textContent=`Rubric score: ${scores[k]} / ${k==="swatch"?15:5}`;updateScores();saveWork(false)}
+function go(n){if(n<0||n>7)return;if(n>current&&current>0&&!done[current]){alert("Please finish this activity and press Completed before moving on.");return}current=n;document.querySelectorAll(".page").forEach(x=>x.classList.toggle("active",Number(x.dataset.page)===n));document.querySelectorAll("nav button").forEach(b=>{b.classList.toggle("active",Number(b.dataset.p)===n);b.classList.toggle("done",!!done[b.dataset.p])});document.getElementById("prev").disabled=n===0;document.getElementById("next").disabled=n===7;window.scrollTo({top:0,behavior:"smooth"});if(n===7)updateScores()}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>go(Number(b.dataset.p))));
+function markDone(n){done[n]=true;saveWork(false);progress();if(n<7)go(n+1)}
+function progress(){let n=Object.values(done).filter(Boolean).length;document.getElementById("prog").value=n;document.getElementById("progLabel").textContent=n+" / 8";document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("done",!!done[b.dataset.p]))}
+const ids=["learner","section","date","trendResponse","sort1","sort2","sort3","sort4","ergoResponse","finish1","finish2","finish3","finish4","swatchLearn","doodleText","reflection","email",...Array.from({length:5},(_,i)=>["name","use","texture","properties"].map(s=>`sw${i}${s}`)).flat()];
+function saveWork(show=true){let d={values:{},answers:{},rubrics:[...document.querySelectorAll("[data-r]")].map(e=>e.value),scores,done};ids.forEach(id=>d.values[id]=document.getElementById(id)?.value??"");Object.keys(sets).forEach(k=>sets[k].forEach((q,i)=>{let el=document.querySelector(`input[name="${k}_${i}"]:checked`);d.answers[k+"_"+i]=el?el.value:null}));try{localStorage.setItem("tle8_term2_week7_v1",JSON.stringify(d));if(show)alert("Your work has been saved on this device.")}catch(e){if(show)alert("Browser storage is unavailable. Please download your answers regularly.")}}
+function loadWork(){try{let d=JSON.parse(localStorage.getItem("tle8_term2_week7_v1")||"null");if(!d)return;ids.forEach(id=>{if(d.values?.[id]!==undefined)document.getElementById(id).value=d.values[id]});Object.keys(sets).forEach(k=>sets[k].forEach((q,i)=>{let v=d.answers?.[k+"_"+i];if(v!==null&&v!==undefined){let el=document.querySelector(`input[name="${k}_${i}"][value="${v}"]`);if(el)el.checked=true}}));(d.rubrics||[]).forEach((v,i)=>{let e=document.querySelectorAll("[data-r]")[i];if(e)e.value=v});scores={...scores,...d.scores};done=d.done||{};["swatch","doodle"].forEach(r=>rubric(r));Object.keys(sets).forEach(k=>{if(scores[k]!==null)document.getElementById("score-"+k).textContent=`Saved score: ${scores[k]} / ${sets[k].length}`});progress();updateScores()}catch(e){}}
+function updateScores(){let max={garment:8,ergo:8,tools:10,fabric:10,swatch:15,doodle:5},labels={garment:"Activity 1 — Garment types & trends",ergo:"Activity 2 — Ergonomics",tools:"Activity 3 — Sewing supplies",fabric:"Activity 4 — Fabrics & finishing",swatch:"Activity 5 — Textile swatch book",doodle:"Activity 6 — Doodle notes"};let total=0;let rows=Object.keys(max).map(k=>{let v=scores[k];if(v!==null)total+=Number(v)||0;return `<tr><td>${labels[k]}</td><td>${v===null?"—":v}</td><td>${max[k]}</td><td>${v===null?"Not checked / teacher assessment pending":"Score recorded"}</td></tr>`}).join("");document.getElementById("scoreTable").innerHTML=rows;let pct=Math.round(total/56*100);document.getElementById("earned").textContent=total;document.getElementById("possible").textContent="56";document.getElementById("percentage").textContent=pct+"%";document.getElementById("percentBig").textContent=pct+"%";document.getElementById("pointsBig").textContent=`${total} / 56 points`;document.getElementById("message").textContent=total===56?"Excellent! Review your work and submit it to your teacher.":"This is your current formative activity score. Complete unchecked quizzes and ask your teacher to assess rubric-based outputs."}
+const GOOGLE_SHEETS_WEB_APP_URL="https://script.google.com/macros/s/AKfycbzKV_-vuU6WOvnxgZO5zLJwQ8rjSnwzWfRueJFaAZ6p1tONCuyCKD0l8t57HnPsuIQr/exec";
+function buildSubmissionPayload(action){
+  saveWork(false);
+  const values={};
+  ids.forEach(id=>{const el=document.getElementById(id);if(el)values[id]=el.value||""});
+  const answers={};
+  Object.keys(sets).forEach(k=>sets[k].forEach((q,i)=>{
+    const el=document.querySelector(`input[name="${k}_${i}"]:checked`);
+    answers[k+"_"+i]=el?el.value:null;
+  }));
+  const responses={};
+  ids.forEach(id=>{if(!["learner","section","date","email"].includes(id))responses[id]=values[id]||""});
+  const rubricScores={};
+  document.querySelectorAll("[data-r]").forEach((el,i)=>{rubricScores["criterion_"+(i+1)]=Number(el.value)||0});
+  const total=Object.values(scores).reduce((sum,v)=>sum+(Number(v)||0),0);
+  return {
+    action, learner:values.learner||"", section:values.section||"", date:values.date||"",
+    teacher:"Mae Ann S. Siarro", school:"CULABAY NATIONAL HIGH SCHOOL",
+    pointsEarned:total, pointsPossible:56, percentage:Math.round(total/56*100),
+    answers, responses, rubricScores, completed:done,
+    payload:{values,answers,scores,completed:done}
+  };
+}
+async function sendToSheets(action){
+  const learner=document.getElementById("learner").value.trim();
+  if(!learner){alert("Please enter the learner's name before saving or submitting.");go(0);document.getElementById("learner").focus();return}
+  const status=document.getElementById("cloudStatus");
+  const btns=[...document.querySelectorAll('button[onclick^="sendToSheets"]')];
+  btns.forEach(b=>b.disabled=true);
+  status.textContent=action==="submit"?"Sending final submission to Google Sheets…":"Sending draft to Google Sheets…";
+  try{
+    await fetch(GOOGLE_SHEETS_WEB_APP_URL,{
+      method:"POST", mode:"no-cors",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify(buildSubmissionPayload(action))
+    });
+    status.textContent=action==="submit"
+      ?"Submission request sent. Because Google Apps Script does not return a readable confirmation in this browser mode, please check the Submissions tab in your Google Sheet to verify it arrived."
+      :"Save request sent. Please check the Submissions tab in your Google Sheet to verify it arrived.";
+    alert(action==="submit"
+      ?"Your submission request has been sent. Please verify that it appears in your teacher's Google Sheet."
+      :"Your save request has been sent. Please verify that it appears in your Google Sheet.");
+  }catch(err){
+    status.textContent="Could not send to Google Sheets. Check your internet connection and Web App deployment, then try again. Your work remains saved on this device.";
+    alert("Unable to send to Google Sheets. Your work remains saved on this device. Please check your connection and try again.");
+  }finally{btns.forEach(b=>b.disabled=false)}
+}
+function downloadAnswers(){saveWork(false);let out=["TLE 8 • TERM 2 • WEEK 7","CULABAY NATIONAL HIGH SCHOOL","Teacher: Mae Ann S. Siarro",""];ids.forEach(id=>{let e=document.getElementById(id);if(e&&e.value)out.push(id+": "+e.value)});out.push("","QUIZ ANSWERS");Object.keys(sets).forEach(k=>sets[k].forEach((q,i)=>{let e=document.querySelector(`input[name="${k}_${i}"]:checked`);out.push(`${k} ${i+1}: ${e?"ABCD"[Number(e.value)]+" — "+q[Number(e.value)+1]:"Not answered"}`)}));out.push("","SCORES");Object.entries(scores).forEach(([k,v])=>out.push(k+": "+(v===null?"Pending":v)));let total=Object.values(scores).reduce((s,v)=>s+(Number(v)||0),0);out.push(`TOTAL: ${total} / 56`, `PERCENTAGE: ${Math.round(total/56*100)}%`);let blob=new Blob([out.join("\n")],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="TLE8_Term2_Week7_"+(document.getElementById("learner").value||"Learner").replace(/[^a-z0-9_-]/gi,"_")+".txt";a.click();URL.revokeObjectURL(url)}
+function emailWork(){let to=document.getElementById("email").value.trim();if(!to){alert("Enter the teacher's email address first, or download/print your work.");return}downloadAnswers();let subject=encodeURIComponent("TLE 8 Term 2 Week 7 Learning Activities — "+document.getElementById("learner").value),body=encodeURIComponent("Good day, Teacher. I am submitting my TLE 8 Term 2 Week 7 learning activities. I have downloaded my answers file. I will attach the file and photos of my swatch book/doodle notes.\\n\\nLearner: "+document.getElementById("learner").value+"\\nSection: "+document.getElementById("section").value+"\\nDate: "+document.getElementById("date").value+"\\n\\nThank you.");location.href=`mailto:${encodeURIComponent(to)}?subject=${subject}&body=${body}`}
+loadWork();progress();updateScores();
+</script></body></html>
